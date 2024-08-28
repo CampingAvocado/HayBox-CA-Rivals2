@@ -34,7 +34,7 @@ void RivalsOfAether::UpdateDigitalOutputs(InputState &inputs, OutputState &outpu
     outputs.select = inputs.select;
     outputs.home = inputs.home;
     outputs.leftStickClick = inputs.lightshield;
-    outputs.rightStickClick = inputs.midshield;
+    // outputs.rightStickClick - inputs.midshield; midshield flag is now also used as inputs.up
 
     // Activate D-Pad layer by holding Mod X + Mod Y.
     if (inputs.mod_x && inputs.mod_y) {
@@ -51,7 +51,7 @@ void RivalsOfAether::UpdateAnalogOutputs(InputState &inputs, OutputState &output
         inputs.left,
         inputs.right,
         inputs.down,
-        inputs.up,
+        inputs.up || inputs.midshield, // little hack to get both up buttons
         inputs.c_left,
         inputs.c_right,
         inputs.c_down,
